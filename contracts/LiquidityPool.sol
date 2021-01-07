@@ -36,7 +36,7 @@ contract LiquidityPool is LpToken {
     }
 
 // Prob.1: there could be uncontrolled inflation (the more liquidity provided, the more governance token minted, existing governance token will decrease
-// Sol.1: distribute a fixeed amount of Gov tokens for each block for the whole liquidity pool, and this will be shared based on the liquidity of each investor
+// Sol.1: distribute a fixed amount of Gov tokens for each block for the whole liquidity pool, and this will be shared based on the liquidity of each investor
     function _distributeRewards(address beneficiary) internal {
         uint256 checkpoint = checkpoints[beneficiary];
         if (block.number - checkpoint > 0) {

@@ -25,13 +25,13 @@ contract('LiquidityPool', accounts => {
 
     it('should mint 400 governance tokens', async () => {
         await underlyingToken.approve(liquidityPool.address, web3.utils.toWei('100'), { from: trader1 });
-        await liquidityPool.deposit(web3.utils.toWei('100'), {from: trader1});
+        await liquidityPool.deposit(web3.utils.toWei('100'), { from: trader1 });
         await time.advanceBlock();
         await time.advanceBlock();
         await time.advanceBlock();
-        await liquidityPool.withdraw(web3.utils.toWei('100'), {from: trader1});
+        await liquidityPool.withdraw(web3.utils.toWei('100'), { from: trader1 });
         const govBalanceTrader1 = await governanceToken.balanceOf(trader1);
-        console.log('bal:', web3.utils.fromWei(bal));
+        console.log('bal:', web3.utils.fromWei(govBalanceTrader1));
         assert(web3.utils.fromWei(govBalanceTrader1.toString()) === '400');
     })
 })
